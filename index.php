@@ -104,7 +104,7 @@
                     </tr>
                 </tbody>
             </table>
-            <input type="submit" value="Simulate" class="btn btn-outline-primary btn-lg mt-2">
+            <input type="submit" value="Simulate" name="submit" class="btn btn-outline-primary btn-lg mt-2">
         </form>
         <?php
         /*
@@ -119,34 +119,39 @@
 
 
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // collect value of input field
-            $madrid_goals_M1 = $_POST['REAL-MADRID-S-M1-C'];
-            if (empty($madrid_goals_M1)) {
-                echo "Name is empty";
-            } else {
-                echo $madrid_goals_M1;
-            }
-        }
-
+        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //     // collect value of input field
+        //     $madrid_goals_M1 = $_POST['REAL-MADRID-S-M1-C'];
+        //     if (empty($madrid_goals_M1)) {
+        //         echo "Name is empty";
+        //     } else {
+        //         echo $madrid_goals_M1;
+        //     }
+        // }
+        
 
         # input values
         // for the First team => Real madrid
-        $madrid_M1 = $_POST["REAL-MADRID-S-M1-C"];
-        $madrid_M2 = $_POST["REAL-MADRID-S-M2-Ch"];
-        $madrid_M3 = $_POST["REAL-MADRID-S-M3-Lv"];
-        // for the Second team => Barcelona
-        $barcelona_M1 = $_POST["FC-BARCELONA-S-M1-C"];
-        $barcelona_M2 = $_POST["FC-BARCELONA-S-M2-Lv"];
-        $barcelona_M3 = $_POST["FC-BARCELONA-S-M3-Ch"];
-        // for the Third team => Liverpool
-        $LIVERPOOL_M1 = $_POST['LIVERPOOL-FC-S-M1-Ch'];
-        $LIVERPOOL_M2 = $_POST['LIVERPOOL-FC-S-M2-Br'];
-        $LIVERPOOL_M3 = $_POST['LIVERPOOL-FC-S-M3-Rm'];
-        // for the forth team => chelsea
-        $CHELSEA_M1 = $_POST['CHELSEA-FC-S-M1-Lv'];
-        $CHELSEA_M2 = $_POST['CHELSEA-FC-S-M2-Rm'];
-        $CHELSEA_M3 = $_POST['CHELSEA-FC-S-M3-Fb'];
+        if (isset($_POST['submit'])) {
+            $madrid_M1 = $_POST["REAL-MADRID-S-M1-C"];
+            $madrid_M2 = $_POST["REAL-MADRID-S-M2-Ch"];
+            $madrid_M3 = $_POST["REAL-MADRID-S-M3-Lv"];
+            // for the Second team => Barcelona
+            $barcelona_M1 = $_POST["FC-BARCELONA-S-M1-C"];
+            $barcelona_M2 = $_POST["FC-BARCELONA-S-M2-Lv"];
+            $barcelona_M3 = $_POST["FC-BARCELONA-S-M3-Ch"];
+            // for the Third team => Liverpool
+            $LIVERPOOL_M1 = $_POST['LIVERPOOL-FC-S-M1-Ch'];
+            $LIVERPOOL_M2 = $_POST['LIVERPOOL-FC-S-M2-Br'];
+            $LIVERPOOL_M3 = $_POST['LIVERPOOL-FC-S-M3-Rm'];
+            // for the forth team => chelsea
+            $CHELSEA_M1 = $_POST['CHELSEA-FC-S-M1-Lv'];
+            $CHELSEA_M2 = $_POST['CHELSEA-FC-S-M2-Rm'];
+            $CHELSEA_M3 = $_POST['CHELSEA-FC-S-M3-Fb'];
+
+            $result = standing($madrid_M1, $madrid_M2, $madrid_M3, $barcelona_M1, $barcelona_M2, $barcelona_M3, $LIVERPOOL_M1, $LIVERPOOL_M2, $LIVERPOOL_M3, $CHELSEA_M1, $CHELSEA_M2, $CHELSEA_M3);
+            var_dump($result);
+        }
 
         function standing($madrid_M1, $madrid_M2, $madrid_M3, $barcelona_M1, $barcelona_M2, $barcelona_M3, $LIVERPOOL_M1, $LIVERPOOL_M2, $LIVERPOOL_M3, $CHELSEA_M1, $CHELSEA_M2, $CHELSEA_M3)
         {
@@ -252,8 +257,7 @@
             return $standings;
         }
 
-        $result = standing($madrid_M1, $madrid_M2, $madrid_M3, $barcelona_M1, $barcelona_M2, $barcelona_M3, $LIVERPOOL_M1, $LIVERPOOL_M2, $LIVERPOOL_M3, $CHELSEA_M1, $CHELSEA_M2, $CHELSEA_M3);
-        var_dump($result);
+
 
         // $result = array(F
         //     $real_madrid = array()
