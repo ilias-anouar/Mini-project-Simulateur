@@ -14,7 +14,6 @@
 
 <body>
     <main class="row font-monospace w-100">
-        h
         <form class="col p-5 text-center" method="get">
             <h2 class="mb-5">Group stage</h2>
             <table class="table table-primary table-striped-columns">
