@@ -136,8 +136,8 @@
 
             // teams goals in initialization
         
+            $goals_in = 0;
             $madrid_goals_in = 0;
-            $Chelsea_goals_in = 0;
             $liverpool_goals_in = 0;
             $barcelona_goals_in = 0;
 
@@ -198,7 +198,7 @@
                 $madrid_wins += 1;
                 $madrid_goals += $madrid_M2;
                 $chelsea_loses += 1;
-                $Chelsea_goals_in = $madrid_M2;
+                $goals_in = $madrid_M2;
                 $madrid_goals_in = $CHELSEA_M2;
                 $chelsea_goals = $CHELSEA_M2;
             } elseif ($madrid_M2 < $CHELSEA_M2) {
@@ -208,14 +208,18 @@
                 $madrid_loses += 1;
                 $madrid_goals = $madrid_M2;
                 $madrid_goals_in = $CHELSEA_M2;
-                $Chelsea_goals_in = $madrid_M2;
+                $goals_in = $madrid_M2;
             } else {
                 $madrid_points += 1;
-                $chelsea_points += 1;
+                $madrid_draw += 1;
                 $madrid_goals += $madrid_M2;
+                $madrid_goals_in += $CHELSEA_M2;
+                $chelsea_points += 1;
                 $chelsea_goals += $CHELSEA_M2;
+                $chelsea_draw += 1;
+                $goals_in = $madrid_M2;
             }
-        
+
             // // match 3 => madrid vs liverpool
             // if ($madrid_M3 > $LIVERPOOL_M3) {
             //     $madrid_points += 3;
@@ -274,10 +278,11 @@
         
             $madrid = array("name" => "Real madrid", "points" => $madrid_points, "match" => $madrid_draw + $madrid_loses + $madrid_wins, "wins" => $madrid_wins, "draws" => $madrid_draw, "loses" => $madrid_loses, "goals" => $madrid_goals, "goals_in" => $madrid_goals_in, "+/-" => $madrid_goals - $madrid_goals_in);
             $barcelona = array("name" => "FC barcelona", "points" => $barcelona_points, "match" => $barcelona_draw + $barcelona_loses + $barcelona_wins, "wins" => $barcelona_wins, "draws" => $barcelona_draw, "loses" => $barcelona_loses, "goals" => $barcelona_goals, "goals_in" => $barcelona_goals_in, "+/-" => $barcelona_goals - $barcelona_goals_in);
+            $chelsea = array("name" => "chelsea FC", "points" => $chelsea_points, "match" => $chelsea_draw + $chelsea_loses + $chelsea_wins, "wins" => $chelsea_wins, "draws" => $chelsea_draw, "loses" => $chelsea_loses, "goals" => $chelsea_goals, "goals_in" => $goals_in, "+/-" => $chelsea_goals - $goals_in);
             $standings = array();
             array_push($standings, $madrid);
             array_push($standings, $barcelona);
-            // array_push($standings, array("name" => "chelsea FC", "points" => $chelsea_points, "goals" => $chelsea_goals));
+            array_push($standings, $chelsea);
             // array_push($standings, array("name" => "Liverpool FC", "points" => $liverpool_points, "goals" => $liverpool_goals));
             return $standings;
         }
@@ -305,7 +310,7 @@
             // // for the Second team => Barcelona
         
             if (!empty($_POST["FC-BARCELONA-S-M1-C"])) {
-                $barcelona_M1 = $_POST["REAL-MADRID-S-M1-C"];
+                $barcelona_M1 = $_POST["FC-BARCELONA-S-M1-C"];
             } else {
                 $barcelona_M1 = 0;
             }
@@ -323,7 +328,7 @@
             // // for the Third team => Liverpool
         
             if (!empty($_POST['LIVERPOOL-FC-S-M1-Ch'])) {
-                $LIVERPOOL_M1 = $_POST["REAL-MADRID-S-M1-C"];
+                $LIVERPOOL_M1 = $_POST['LIVERPOOL-FC-S-M1-Ch'];
             } else {
                 $LIVERPOOL_M1 = 0;
             }
@@ -381,7 +386,8 @@
                 <tbody>
                     <tr>
                         <td scope="row">1</td>
-                        <!-- <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td>
+                        <!-- <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td> -->
+                        <!-- <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -391,9 +397,11 @@
                         <td></td>
                         <td></td> -->
                         <?php
-                        foreach ($result as $key) {
-                            foreach ($key as $x => $value) {
-                                echo "<td>$value</td>";
+                        if (isset($result)) {
+                            foreach ($result as $key) {
+                                foreach ($key as $x => $value) {
+                                    echo "<td>$value</td>";
+                                }
                             }
                         }
                         ?>
