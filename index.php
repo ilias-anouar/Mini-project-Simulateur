@@ -137,7 +137,7 @@
             // teams goals in initialization
         
             $madrid_goals_in = 0;
-            $c_goals_in = 0;
+            $Chelsea_goals_in = 0;
             $liverpool_goals_in = 0;
             $barcelona_goals_in = 0;
 
@@ -192,29 +192,29 @@
                 $barcelona_goals_in += $madrid_M1;
             }
 
-            // // match 2 => madrid vs chelsea
-            // if ($madrid_M2 > $CHELSEA_M2) {
-            //     $madrid_points += 3;
-            //     $madrid_wins += 1;
-            //     $madrid_goals += $madrid_M2;
-            //     $chelsea_loses += 1;
-            //     $c_goals_in = $madrid_M2;
-            //     $madrid_goals_in = $CHELSEA_M2;
-            //     $chelsea_goals = $CHELSEA_M2;
-            // } elseif ($madrid_M2 < $CHELSEA_M2) {
-            //     $chelsea_points += 3;
-            //     $chelsea_wins += 1;
-            //     $chelsea_goals += $CHELSEA_M2;
-            //     $madrid_loses += 1;
-            //     $madrid_goals = $madrid_M2;
-            //     $madrid_goals_in = $CHELSEA_M2;
-            //     $chelsea_goals_in = $madrid_M2;
-            // } else {
-            //     $madrid_points += 1;
-            //     $chelsea_points += 1;
-            //     $madrid_goals += $madrid_M2;
-            //     $chelsea_goals += $CHELSEA_M2;
-            // }
+            // match 2 => madrid vs chelsea
+            if ($madrid_M2 > $CHELSEA_M2) {
+                $madrid_points += 3;
+                $madrid_wins += 1;
+                $madrid_goals += $madrid_M2;
+                $chelsea_loses += 1;
+                $Chelsea_goals_in = $madrid_M2;
+                $madrid_goals_in = $CHELSEA_M2;
+                $chelsea_goals = $CHELSEA_M2;
+            } elseif ($madrid_M2 < $CHELSEA_M2) {
+                $chelsea_points += 3;
+                $chelsea_wins += 1;
+                $chelsea_goals += $CHELSEA_M2;
+                $madrid_loses += 1;
+                $madrid_goals = $madrid_M2;
+                $madrid_goals_in = $CHELSEA_M2;
+                $Chelsea_goals_in = $madrid_M2;
+            } else {
+                $madrid_points += 1;
+                $chelsea_points += 1;
+                $madrid_goals += $madrid_M2;
+                $chelsea_goals += $CHELSEA_M2;
+            }
         
             // // match 3 => madrid vs liverpool
             // if ($madrid_M3 > $LIVERPOOL_M3) {
@@ -286,30 +286,78 @@
 
         if (isset($_POST['submit'])) {
             // for the First team => Real madrid
-            $madrid_M1 = $_POST["REAL-MADRID-S-M1-C"];
-            $madrid_M2 = $_POST["REAL-MADRID-S-M2-Ch"];
-            $madrid_M3 = $_POST["REAL-MADRID-S-M3-Lv"];
-            // for the Second team => Barcelona
-            $barcelona_M1 = $_POST["FC-BARCELONA-S-M1-C"];
-            $barcelona_M2 = $_POST["FC-BARCELONA-S-M2-Lv"];
-            $barcelona_M3 = $_POST["FC-BARCELONA-S-M3-Ch"];
-            // for the Third team => Liverpool
-            $LIVERPOOL_M1 = $_POST['LIVERPOOL-FC-S-M1-Ch'];
-            $LIVERPOOL_M2 = $_POST['LIVERPOOL-FC-S-M2-Br'];
-            $LIVERPOOL_M3 = $_POST['LIVERPOOL-FC-S-M3-Rm'];
-            // for the forth team => chelsea
-            $CHELSEA_M1 = $_POST['CHELSEA-FC-S-M1-Lv'];
-            $CHELSEA_M2 = $_POST['CHELSEA-FC-S-M2-Rm'];
-            $CHELSEA_M3 = $_POST['CHELSEA-FC-S-M3-Fb'];
+            if (!empty($_POST["REAL-MADRID-S-M1-C"])) {
+                $madrid_M1 = $_POST["REAL-MADRID-S-M1-C"];
+            } else {
+                $madrid_M1 = 0;
+            }
+            if (!empty($_POST["REAL-MADRID-S-M2-Ch"])) {
+                $madrid_M2 = $_POST["REAL-MADRID-S-M2-Ch"];
+            } else {
+                $madrid_M2 = 0;
+            }
+            if (!empty($_POST["REAL-MADRID-S-M3-Lv"])) {
+                $madrid_M3 = $_POST["REAL-MADRID-S-M3-Lv"];
+            } else {
+                $madrid_M3 = 0;
+            }
+
+            // // for the Second team => Barcelona
+        
+            if (!empty($_POST["FC-BARCELONA-S-M1-C"])) {
+                $barcelona_M1 = $_POST["REAL-MADRID-S-M1-C"];
+            } else {
+                $barcelona_M1 = 0;
+            }
+            if (!empty($_POST["FC-BARCELONA-S-M2-Lv"])) {
+                $barcelona_M2 = $_POST["FC-BARCELONA-S-M2-Lv"];
+            } else {
+                $barcelona_M2 = 0;
+            }
+            if (!empty($_POST["FC-BARCELONA-S-M3-Ch"])) {
+                $barcelona_M3 = $_POST["FC-BARCELONA-S-M3-Ch"];
+            } else {
+                $barcelona_M3 = 0;
+            }
+
+            // // for the Third team => Liverpool
+        
+            if (!empty($_POST['LIVERPOOL-FC-S-M1-Ch'])) {
+                $LIVERPOOL_M1 = $_POST["REAL-MADRID-S-M1-C"];
+            } else {
+                $LIVERPOOL_M1 = 0;
+            }
+            if (!empty($_POST['LIVERPOOL-FC-S-M2-Br'])) {
+                $LIVERPOOL_M2 = $_POST['LIVERPOOL-FC-S-M2-Br'];
+            } else {
+                $LIVERPOOL_M2 = 0;
+            }
+            if (!empty($_POST['LIVERPOOL-FC-S-M3-Rm'])) {
+                $LIVERPOOL_M3 = $_POST['LIVERPOOL-FC-S-M3-Rm'];
+            } else {
+                $LIVERPOOL_M3 = 0;
+            }
+
+            // // for the forth team => chelsea
+        
+            if (!empty($_POST['CHELSEA-FC-S-M1-Lv'])) {
+                $CHELSEA_M1 = $_POST['CHELSEA-FC-S-M1-Lv'];
+            } else {
+                $CHELSEA_M1 = 0;
+            }
+            if (!empty($_POST['CHELSEA-FC-S-M2-Rm'])) {
+                $CHELSEA_M2 = $_POST['CHELSEA-FC-S-M2-Rm'];
+            } else {
+                $CHELSEA_M2 = 0;
+            }
+            if (!empty($_POST['CHELSEA-FC-S-M3-Fb'])) {
+                $CHELSEA_M3 = $_POST['CHELSEA-FC-S-M3-Fb'];
+            } else {
+                $CHELSEA_M3 = 0;
+            }
 
             $result = standing($madrid_M1, $madrid_M2, $madrid_M3, $barcelona_M1, $barcelona_M2, $barcelona_M3, $LIVERPOOL_M1, $LIVERPOOL_M2, $LIVERPOOL_M3, $CHELSEA_M1, $CHELSEA_M2, $CHELSEA_M3);
-            print_r($result);
 
-            foreach ($result as $key) {
-                foreach ($key as $x => $value) {
-                    echo "<td>$value</td>";
-                }
-            }
         }
 
         ?>
