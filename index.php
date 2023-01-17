@@ -47,7 +47,7 @@
                         <td> <img src="IMG/CHELSEA-FC.png" alt="logo" width="50px" height="50px"></td>
                     </tr>
                     <tr>
-                        <td><img src="IMG/FC-BARCELONA.png" alt="logo" width="50px" height="60px"></td>
+                        <td><img src="IMG/FC-BARCELONA.png" alt="logo" width="50px" height="50px"></td>
                         <td>
                             <div class="input-group">
                                 <input type="number" name="FC-BARCELONA-S-M2-Lv" value="<?php if (isset($_POST['FC-BARCELONA-S-M2-Lv']))
@@ -58,7 +58,7 @@
                                     class="form-control">
                             </div>
                         </td>
-                        <td> <img src="IMG/LIVERPOOL-FC.svg" alt="logo" width="50px" height="50px"></td>
+                        <td> <img src="IMG/LIVERPOOL-FC.svg" alt="logo" width="50px" height="60px"></td>
                     </tr>
                     <tr>
                         <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td>
@@ -89,7 +89,7 @@
                         <td> <img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="50px"></td>
                     </tr>
                     <tr>
-                        <td><img src="IMG/CHELSEA-FC.png" alt="logo" width="50px" height="60px"></td>
+                        <td><img src="IMG/CHELSEA-FC.png" alt="logo" width="50px" height="50px"></td>
                         <td>
                             <div class="input-group">
                                 <input type="number" name="CHELSEA-FC-S-M3-Fb" value="<?php if (isset($_POST['CHELSEA-FC-S-M3-Fb']))
@@ -115,24 +115,9 @@
         * create row for each team with the correct order => sort by points or goals => conditions
         */
 
-
-
-
-
-        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //     // collect value of input field
-        //     $madrid_goals_M1 = $_POST['REAL-MADRID-S-M1-C'];
-        //     if (empty($madrid_goals_M1)) {
-        //         echo "Name is empty";
-        //     } else {
-        //         echo $madrid_goals_M1;
-        //     }
-        // }
-        
-
         # input values
-        // for the First team => Real madrid
         if (isset($_POST['submit'])) {
+            // for the First team => Real madrid
             $madrid_M1 = $_POST["REAL-MADRID-S-M1-C"];
             $madrid_M2 = $_POST["REAL-MADRID-S-M2-Ch"];
             $madrid_M3 = $_POST["REAL-MADRID-S-M3-Lv"];
