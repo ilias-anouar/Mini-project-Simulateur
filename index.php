@@ -198,17 +198,17 @@
                 $madrid_wins += 1;
                 $madrid_goals += $madrid_M2;
                 $chelsea_loses += 1;
-                $goals_in = $madrid_M2;
-                $madrid_goals_in = $CHELSEA_M2;
-                $chelsea_goals = $CHELSEA_M2;
+                $goals_in += $madrid_M2;
+                $madrid_goals_in += $CHELSEA_M2;
+                $chelsea_goals += $CHELSEA_M2;
             } elseif ($madrid_M2 < $CHELSEA_M2) {
                 $chelsea_points += 3;
                 $chelsea_wins += 1;
                 $chelsea_goals += $CHELSEA_M2;
                 $madrid_loses += 1;
-                $madrid_goals = $madrid_M2;
-                $madrid_goals_in = $CHELSEA_M2;
-                $goals_in = $madrid_M2;
+                $madrid_goals += $madrid_M2;
+                $madrid_goals_in += $CHELSEA_M2;
+                $goals_in += $madrid_M2;
             } else {
                 $madrid_points += 1;
                 $madrid_draw += 1;
@@ -217,75 +217,138 @@
                 $chelsea_points += 1;
                 $chelsea_goals += $CHELSEA_M2;
                 $chelsea_draw += 1;
-                $goals_in = $madrid_M2;
+                $goals_in += $madrid_M2;
             }
 
-            // // match 3 => madrid vs liverpool
-            // if ($madrid_M3 > $LIVERPOOL_M3) {
-            //     $madrid_points += 3;
-            //     $madrid_goals += $madrid_M2;
-            // } elseif ($madrid_M3 < $LIVERPOOL_M3) {
-            //     $liverpool_points += 3;
-            //     $liverpool_goals += $LIVERPOOL_M3;
-            // } else {
-            //     $madrid_points += 1;
-            //     $liverpool_points += 1;
-            //     $madrid_goals += $madrid_M3;
-            //     $liverpool_goals += $LIVERPOOL_M3;
-            // }
-        
-            // // match 4 => liverpool vs chelsea
-            // if ($LIVERPOOL_M1 > $CHELSEA_M1) {
-            //     $liverpool_points += 3;
-            //     $chelsea_goals += $CHELSEA_M1;
-            // } elseif ($LIVERPOOL_M1 < $CHELSEA_M1) {
-            //     $liverpool_points += 3;
-            //     $liverpool_goals += $LIVERPOOL_M1;
-            // } else {
-            //     $chelsea_points += 1;
-            //     $liverpool_points += 1;
-            //     $chelsea_goals += $CHELSEA_M1;
-            //     $liverpool_goals += $LIVERPOOL_M3;
-            // }
-        
-            // // match 5 => liverpool vs barcelona
-            // if ($LIVERPOOL_M2 > $barcelona_M2) {
-            //     $liverpool_points += 3;
-            //     $liverpool_goals += $LIVERPOOL_M2;
-            // } elseif ($LIVERPOOL_M2 < $barcelona_M2) {
-            //     $barcelona_points += 3;
-            //     $barcelona_goals += $LIVERPOOL_M2;
-            // } else {
-            //     $barcelona_points += 1;
-            //     $liverpool_points += 1;
-            //     $barcelona_goals += $barcelona_M2;
-            //     $liverpool_goals += $LIVERPOOL_M2;
-            // }
-        
-            // // match 6 => barcelona vs chelsea
-            // if ($barcelona_M3 > $CHELSEA_M3) {
-            //     $barcelona_points += 3;
-            //     $barcelona_goals += $barcelona_M3;
-            // } elseif ($barcelona_M3 < $CHELSEA_M3) {
-            //     $chelsea_points += 3;
-            //     $chelsea_goals += $CHELSEA_M3;
-            // } else {
-            //     $chelsea_points += 1;
-            //     $barcelona_points += 1;
-            //     $chelsea_goals += $CHELSEA_M3;
-            //     $barcelona_goals += $barcelona_M3;
-            // }
-        
+            // match 3 => madrid vs liverpool
+            if ($madrid_M3 > $LIVERPOOL_M3) {
+                $madrid_points += 3;
+                $madrid_wins += 1;
+                $madrid_goals += $madrid_M3;
+                $madrid_goals_in += $LIVERPOOL_M3;
+                $liverpool_goals += $LIVERPOOL_M3;
+                $liverpool_goals_in += $madrid_M3;
+                $liverpool_loses += 1;
+            } elseif ($madrid_M3 < $LIVERPOOL_M3) {
+                $liverpool_points += 3;
+                $liverpool_goals += $LIVERPOOL_M3;
+                $liverpool_wins += 1;
+                $liverpool_goals_in += $madrid_M3;
+                $madrid_loses += 1;
+                $madrid_goals += $madrid_M3;
+                $madrid_goals_in += $LIVERPOOL_M3;
+            } else {
+                $madrid_points += 1;
+                $madrid_goals += $madrid_M3;
+                $madrid_draw += 1;
+                $madrid_goals_in += $LIVERPOOL_M3;
+                $liverpool_points += 1;
+                $liverpool_goals += $LIVERPOOL_M3;
+                $liverpool_draw += 1;
+                $liverpool_goals_in += $madrid_M3;
+            }
+
+            // match 4 => liverpool vs chelsea
+            if ($LIVERPOOL_M1 > $CHELSEA_M1) {
+                $liverpool_points += 3;
+                $liverpool_wins += 1;
+                $liverpool_goals += $LIVERPOOL_M1;
+                $liverpool_goals_in += $CHELSEA_M1;
+                $chelsea_loses += 1;
+                $goals_in += $LIVERPOOL_M1;
+                $chelsea_goals += $CHELSEA_M1;
+            } elseif ($LIVERPOOL_M1 < $CHELSEA_M1) {
+                $chelsea_points += 3;
+                $chelsea_wins += 1;
+                $chelsea_goals += $CHELSEA_M1;
+                $goals_in += $LIVERPOOL_M1;
+                $liverpool_goals += $LIVERPOOL_M1;
+                $liverpool_loses += 1;
+                $liverpool_goals_in += $CHELSEA_M1;
+            } else {
+                $chelsea_points += 1;
+                $chelsea_draw += 1;
+                $chelsea_goals += $CHELSEA_M1;
+                $goals_in += $LIVERPOOL_M1;
+                $liverpool_points += 1;
+                $liverpool_draw += 1;
+                $liverpool_goals += $LIVERPOOL_M1;
+                $liverpool_goals_in += $CHELSEA_M1;
+            }
+
+            // match 5 => liverpool vs barcelona
+            if ($LIVERPOOL_M2 > $barcelona_M2) {
+                $liverpool_points += 3;
+                $liverpool_goals += $LIVERPOOL_M2;
+                $liverpool_wins += 1;
+                $liverpool_goals_in += $barcelona_M2;
+                $barcelona_loses += 1;
+                $barcelona_goals += $barcelona_M2;
+                $barcelona_goals_in += $LIVERPOOL_M2;
+            } elseif ($LIVERPOOL_M2 < $barcelona_M2) {
+                $barcelona_points += 3;
+                $barcelona_goals += $barcelona_M2;
+                $barcelona_wins += 1;
+                $barcelona_goals_in += $LIVERPOOL_M2;
+                $liverpool_loses += 1;
+                $liverpool_goals += $LIVERPOOL_M2;
+                $liverpool_goals_in += $barcelona_M2;
+            } else {
+                $barcelona_points += 1;
+                $barcelona_draw += 1;
+                $barcelona_goals += $barcelona_M2;
+                $barcelona_goals_in += $LIVERPOOL_M2;
+                $liverpool_points += 1;
+                $liverpool_draw += 1;
+                $liverpool_goals += $LIVERPOOL_M2;
+                $liverpool_goals_in += $barcelona_M2;
+            }
+
+            // match 6 => barcelona vs chelsea
+            if ($barcelona_M3 > $CHELSEA_M3) {
+                $barcelona_points += 3;
+                $barcelona_wins += 1;
+                $barcelona_goals += $barcelona_M3;
+                $barcelona_goals_in += $CHELSEA_M3;
+                $chelsea_loses += 1;
+                $goals_in += $barcelona_M3;
+                $chelsea_goals += $barcelona_M3;
+            } elseif ($barcelona_M3 < $CHELSEA_M3) {
+                $chelsea_points += 3;
+                $chelsea_wins += 1;
+                $chelsea_goals += $CHELSEA_M3;
+                $goals_in += $barcelona_M3;
+                $barcelona_loses += 1;
+                $barcelona_goals += $barcelona_M3;
+                $barcelona_goals_in += $CHELSEA_M3;
+            } else {
+                $chelsea_points += 1;
+                $chelsea_draw += 1;
+                $chelsea_goals += $CHELSEA_M3;
+                $goals_in += $barcelona_M3;
+                $barcelona_points += 1;
+                $barcelona_draw += 1;
+                $barcelona_goals_in += $CHELSEA_M3;
+                $barcelona_goals += $barcelona_M3;
+            }
+
+            // madrid result
             $madrid = array("name" => "Real madrid", "points" => $madrid_points, "match" => $madrid_draw + $madrid_loses + $madrid_wins, "wins" => $madrid_wins, "draws" => $madrid_draw, "loses" => $madrid_loses, "goals" => $madrid_goals, "goals_in" => $madrid_goals_in, "+/-" => $madrid_goals - $madrid_goals_in);
+            // barcelona result
             $barcelona = array("name" => "FC barcelona", "points" => $barcelona_points, "match" => $barcelona_draw + $barcelona_loses + $barcelona_wins, "wins" => $barcelona_wins, "draws" => $barcelona_draw, "loses" => $barcelona_loses, "goals" => $barcelona_goals, "goals_in" => $barcelona_goals_in, "+/-" => $barcelona_goals - $barcelona_goals_in);
+            // chelsea result
             $chelsea = array("name" => "chelsea FC", "points" => $chelsea_points, "match" => $chelsea_draw + $chelsea_loses + $chelsea_wins, "wins" => $chelsea_wins, "draws" => $chelsea_draw, "loses" => $chelsea_loses, "goals" => $chelsea_goals, "goals_in" => $goals_in, "+/-" => $chelsea_goals - $goals_in);
+            // liverpool result
+            $liverpool = array("name" => "Liverpool FC", "points" => $liverpool_points, "match" => $liverpool_draw + $liverpool_loses + $liverpool_wins, "wins" => $liverpool_wins, "draws" => $liverpool_draw, "loses" => $liverpool_loses, "goals" => $liverpool_goals, "goals_in" => $liverpool_goals_in, "+/-" => $liverpool_goals - $liverpool_goals_in);
+            // standings array
             $standings = array();
             array_push($standings, $madrid);
             array_push($standings, $barcelona);
             array_push($standings, $chelsea);
-            // array_push($standings, array("name" => "Liverpool FC", "points" => $liverpool_points, "goals" => $liverpool_goals));
+            array_push($standings, $liverpool);
             return $standings;
         }
+
 
         $result;
 
@@ -361,8 +424,34 @@
                 $CHELSEA_M3 = 0;
             }
 
-            $result = standing($madrid_M1, $madrid_M2, $madrid_M3, $barcelona_M1, $barcelona_M2, $barcelona_M3, $LIVERPOOL_M1, $LIVERPOOL_M2, $LIVERPOOL_M3, $CHELSEA_M1, $CHELSEA_M2, $CHELSEA_M3);
 
+            $result = standing($madrid_M1, $madrid_M2, $madrid_M3, $barcelona_M1, $barcelona_M2, $barcelona_M3, $LIVERPOOL_M1, $LIVERPOOL_M2, $LIVERPOOL_M3, $CHELSEA_M1, $CHELSEA_M2, $CHELSEA_M3);
+            // var_dump($result);
+            usort($result, function ($a, $b) {
+                if ($a['points'] === $b['points']) {
+                    if ($a['+/-'] === $b['+/-']) {
+                        if ($a['goals'] === $b['goals']) {
+                            return 0;
+                        }
+                        return ($a['goals'] > $b['goals']) ? -1 : 1;
+                    }
+                    return ($a['+/-'] > $b['+/-']) ? -1 : 1;
+                }
+                return ($a['points'] > $b['points']) ? -1 : 1;
+            });
+            function buildTable($array){
+                echo "<tbody>";
+                $count = 0;
+                foreach ($array as $key => $value) {
+                    $count += 1;
+                    echo "<tr><th scope='row'>" . $count . "</th>";
+                    foreach ($value as $key => $value) {
+                        echo "<td>" . $value . "</td>";
+                    }
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+            }
         }
 
         ?>
@@ -383,66 +472,11 @@
                         <th scope="col">+/-</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <!-- <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td> -->
-                        <!-- <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td> -->
-                        <?php
-                        if (isset($result)) {
-                            foreach ($result as $key) {
-                                foreach ($key as $x => $value) {
-                                    echo "<td>$value</td>";
-                                }
-                            }
-                        }
-                        ?>
-                    </tr>
-                    <tr>
-                        <td scope="row">2</td>
-                        <td><img src="IMG/FC-BARCELONA.png" alt="logo" width="50px" height="50px"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td scope="row">3</td>
-                        <td><img src="IMG/CHELSEA-FC.png" alt="logo" width="50px" height="50px"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td scope="row">4</td>
-                        <td><img src="IMG/LIVERPOOL-FC.svg" alt="logo" width="50px" height="50px"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
+                <?php
+                if (isset($result)) {
+                    buildTable($result);
+                }
+                ?>
             </table>
         </section>
     </main>
