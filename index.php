@@ -107,6 +107,7 @@
             <input type="submit" value="Simulate" name="submit" class="btn btn-outline-primary btn-lg mt-2">
         </form>
         <?php
+        
         /*
         To Simulate result and standing :
         * using post method to get the value from input.
