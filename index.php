@@ -107,7 +107,7 @@
             <input type="submit" value="Simulate" name="submit" class="btn btn-outline-primary btn-lg mt-2">
         </form>
         <?php
-        
+
         /*
         To Simulate result and standing :
         * using post method to get the value from input.
@@ -440,7 +440,8 @@
                 }
                 return ($a['points'] > $b['points']) ? -1 : 1;
             });
-            function buildTable($array){
+            function buildTable($array)
+            {
                 echo "<tbody>";
                 $count = 0;
                 foreach ($array as $key => $value) {
