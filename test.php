@@ -48,7 +48,8 @@ function standing($team_1, $team_2, $array_1, $array_2)
         $array_2["goals"] += $team_2;
         $array_2["goals_in"] += $team_1;
     }
-    return [$array_1,$array_2];
+    $match = [$array_1, $array_2];
+    return $match; 
 }
 
 ?>
