@@ -127,7 +127,7 @@
         // liverpool result
         $liverpool = array("name" => "Liverpool FC", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
 
-        function standing($team_1, $team_2, $array_1, $array_2)
+        function standing($team_1, $team_2, &$array_1, &$array_2)
         {
             // match 1 => madrid vs barcelona
             if ($team_1 > $team_2) {
@@ -174,21 +174,22 @@
             }
             $result;
             for ($i = 0; $i < count($match) - round((count($match) / 2)); $i++) {
-                echo (count($match) - round((count($match) / 2)));
                 $result = standing($match[$i], $match[$i + 1], $madrid, $barcelona);
             }
-            usort($result, function ($a, $b) {
-                if ($a['points'] === $b['points']) {
-                    if ($a['+/-'] === $b['+/-']) {
-                        if ($a['goals'] === $b['goals']) {
-                            return 0;
+            if (isset($result)) {
+                usort($result, function ($a, $b) {
+                    if ($a['points'] === $b['points']) {
+                        if ($a['+/-'] === $b['+/-']) {
+                            if ($a['goals'] === $b['goals']) {
+                                return 0;
+                            }
+                            return ($a['goals'] > $b['goals']) ? -1 : 1;
                         }
-                        return ($a['goals'] > $b['goals']) ? -1 : 1;
+                        return ($a['+/-'] > $b['+/-']) ? -1 : 1;
                     }
-                    return ($a['+/-'] > $b['+/-']) ? -1 : 1;
-                }
-                return ($a['points'] > $b['points']) ? -1 : 1;
-            });
+                    return ($a['points'] > $b['points']) ? -1 : 1;
+                });
+            }
             function buildTable($array)
             {
                 echo "<tbody>";
