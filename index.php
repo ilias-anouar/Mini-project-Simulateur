@@ -172,12 +172,10 @@
             foreach ($matches as $key => $value) {
                 array_push($match, $value);
             }
+            $result;
             for ($i = 0; $i < count($match) - round((count($match) / 2)); $i++) {
                 echo (count($match) - round((count($match) / 2)));
-                standing($match[$i], $match[$i + 1], $madrid, $barcelona);
-                echo "<pre>";
-                print_r(standing($match[$i], $match[$i + 1], $madrid, $barcelona));
-                echo "</pre>";
+                $result = standing($match[$i], $match[$i + 1], $madrid, $barcelona);
             }
             usort($result, function ($a, $b) {
                 if ($a['points'] === $b['points']) {
