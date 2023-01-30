@@ -1,5 +1,4 @@
 let input = document.querySelectorAll('input')
-console.log(input);
 function setvalue(array) {
     for (let i = 0; i < array.length - 1; i++) {
         array[i].addEventListener('input', function () {

@@ -168,14 +168,16 @@
                     $matches["$key"] = $value;
                 }
             }
-            $match = array();
+            $matchtags = array();
+            $matchscoure = array();
             foreach ($matches as $key => $value) {
-                array_push($match, $value);
+                array_push($matchtags, $key);
+                array_push($matchscoure, $value);
             }
             $result;
-            for ($i = 0; $i < count($match) - round((count($match) / 2)); $i++) {
-                $result = standing($match[$i], $match[$i + 1], $madrid, $barcelona);
-            }
+            // for ($i = 0; $i < count($match) - round((count($match) / 2)); $i++) {
+            //     $result = standing($match[$i], $match[$i + 1], $madrid, $barcelona);
+            // }
             if (isset($result)) {
                 usort($result, function ($a, $b) {
                     if ($a['points'] === $b['points']) {
