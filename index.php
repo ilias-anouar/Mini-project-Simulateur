@@ -174,6 +174,12 @@
                 array_push($matchtags, $key);
                 array_push($matchscoure, $value);
             }
+            for ($i=0; $i < count($matchtags); $i++) {
+                echo "<pre>";
+                print_r($matchtags[$i]);
+                echo "</pre>";
+            }
+            
             $result;
             // for ($i = 0; $i < count($match) - round((count($match) / 2)); $i++) {
             //     $result = standing($match[$i], $match[$i + 1], $madrid, $barcelona);
