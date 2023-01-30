@@ -156,8 +156,6 @@
                 $array_2["goals"] += $team_2;
                 $array_2["goals_in"] += $team_1;
             }
-            $match = [$array_1, $array_2];
-            return $match;
         }
 
         if (isset($_POST['submit'])) {
@@ -174,16 +172,32 @@
                 array_push($matchtags, $key);
                 array_push($matchscoure, $value);
             }
-            for ($i=0; $i < count($matchtags); $i++) {
-                echo "<pre>";
-                print_r($matchtags[$i]);
-                echo "</pre>";
+            for ($i = 0; $i < count($matchtags) - 1; $i += 2) {
+                if (strpos($matchtags[$i], 'MADRID') > 0 && strpos($matchtags[$i + 1], 'BARCELONA') > 0) {
+                    standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $barcelona);
+                } else if (strpos($matchtags[$i], 'LIVERPOOL') > 0 && strpos($matchtags[$i + 1], 'CHELSEA') > 0) {
+                    standing($matchscoure[$i], $matchscoure[$i + 1], $liverpool, $chelsea);
+                } else if (strpos($matchtags[$i], 'BARCELONA') > 0 && strpos($matchtags[$i + 1], 'LIVERPOOL') > 0) {
+                    standing($matchscoure[$i], $matchscoure[$i + 1], $barcelona, $liverpool);
+                } else if (strpos($matchtags[$i], 'MADRID') > 0 && strpos($matchtags[$i + 1], 'CHELSEA') > 0) {
+                    standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $chelsea);
+                } else if (strpos($matchtags[$i], 'LIVERPOOL') > 0 && strpos($matchtags[$i + 1], 'MADRID') > 0) {
+                    standing($matchscoure[$i], $matchscoure[$i + 1], $liverpool, $madrid);
+                } else if (strpos($matchtags[$i], 'CHELSEA') > 0 && strpos($matchtags[$i + 1], 'BARCELONA') > 0) {
+                    standing($matchscoure[$i], $matchscoure[$i + 1], $chelsea, $barcelona);
+                }
             }
-            
-            $result;
-            // for ($i = 0; $i < count($match) - round((count($match) / 2)); $i++) {
-            //     $result = standing($match[$i], $match[$i + 1], $madrid, $barcelona);
-            // }
+            echo "<pre>";
+            print_r($madrid);
+            echo "</pre>";
+
+
+            $result = array();
+            array_push($result, $madrid);
+            array_push($result, $barcelona);
+            array_push($result, $liverpool);
+            array_push($result, $chelsea);
+
             if (isset($result)) {
                 usort($result, function ($a, $b) {
                     if ($a['points'] === $b['points']) {
