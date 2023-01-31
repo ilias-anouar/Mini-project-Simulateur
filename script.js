@@ -1,4 +1,10 @@
 let input = document.querySelectorAll("input");
+window.addEventListener("DOMContentLoaded", function () {
+  for (let j = 0; j < array.length; j++) {
+    console.log(input[j]);
+    input[j].setAttribute("min", "0");
+  }
+});
 let inputRGX = /[0-9]/;
 function setvalue(array) {
   for (let i = 0; i < array.length - 1; i++) {
