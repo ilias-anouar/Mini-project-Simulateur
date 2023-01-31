@@ -178,17 +178,30 @@
             }
 
             for ($i = 0; $i < count($matchtags) - 1; $i += 2) {
-                if (strpos($matchtags[$i], 'MADRID') >= 0 && strpos($matchtags[$i + 1], 'BARCELONA') >= 0) {
+                // echo "<pre>";
+                // echo $matchtags[$i];
+                // echo "</pre>";
+                // echo "<pre>";
+                // echo $matchtags[$i + 1];
+                // echo "</pre>";
+                // echo "<pre>";
+                // echo $matchscoure[$i];
+                // echo "</pre>";
+                // echo "<pre>";
+                // echo $matchscoure[$i + 1];
+                // echo "</pre>";
+
+                if ($matchtags[$i] === "REAL-MADRID-S-M1-C" && $matchtags[$i + 1] === "FC-BARCELONA-S-M1-C") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $barcelona);
-                } elseif (strpos($matchtags[$i], 'LIVERPOOL') >= 0 && strpos($matchtags[$i + 1], 'CHELSEA') >= 0) {
+                } elseif ($matchtags[$i] === "LIVERPOOL-FC-S-M1-Ch" && $matchtags[$i + 1] === "CHELSEA-FC-S-M1-Lv") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $liverpool, $chelsea);
-                } elseif (strpos($matchtags[$i], 'BARCELONA') >= 0 && strpos($matchtags[$i + 1], 'LIVERPOOL') >= 0) {
+                } elseif ($matchtags[$i] === "FC-BARCELONA-S-M2-Lv" && $matchtags[$i + 1] === "LIVERPOOL-FC-S-M2-Br") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $barcelona, $liverpool);
-                } elseif (strpos($matchtags[$i], 'MADRID') >= 0 && strpos($matchtags[$i + 1], 'CHELSEA') >= 0) {
+                } elseif ($matchtags[$i] === "REAL-MADRID-S-M2-Ch" && $matchtags[$i + 1] === "CHELSEA-FC-S-M2-Rm") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $chelsea);
-                } elseif (strpos($matchtags[$i], 'LIVERPOOL') >= 0 && strpos($matchtags[$i + 1], 'MADRID') >= 0) {
+                } elseif ($matchtags[$i] === "LIVERPOOL-FC-S-M3-Rm" && $matchtags[$i + 1] === "REAL-MADRID-S-M3-Lv") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $liverpool, $madrid);
-                } elseif (strpos($matchtags[$i], 'CHELSEA') >= 0 && strpos($matchtags[$i + 1], 'BARCELONA') >= 0) {
+                } elseif ($matchtags[$i] === "CHELSEA-FC-S-M3-Fb" && $matchtags[$i + 1] === "FC-BARCELONA-S-M3-Ch") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $chelsea, $barcelona);
                 }
             }
