@@ -147,6 +147,10 @@
                 $array_2["goals"] += $team_2;
                 $array_2["goals_in"] += $team_1;
             }
+            $array_1["+/-"] = $array_1["goals"] - $array_1["goals_in"];
+            $array_2["+/-"] = $array_2["goals"] - $array_2["goals_in"];
+            $array_1["match"] += 1;
+            $array_2["match"] += 1;
         }
 
         if (isset($_POST['submit'])) {
@@ -214,10 +218,10 @@
             {
                 echo "<tbody>";
                 $count = 0;
-                foreach ($array as $key => $value) {
+                foreach ($array as $key) {
                     $count += 1;
                     echo "<tr><th scope='row'>" . $count . "</th>";
-                    foreach ($value as $key => $value) {
+                    foreach ($key as $value) {
                         echo "<td>" . $value . "</td>";
                     }
                     echo "</tr>";
