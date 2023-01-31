@@ -24,10 +24,10 @@
                         <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td>
                         <td class="w-50">
                             <div class="input-group">
-                                <input type="number"  value="<?php if (isset($_POST['REAL-MADRID-S-M1-C']))
+                                <input type="number" min="0" value="<?php if (isset($_POST['REAL-MADRID-S-M1-C']))
                                     echo $_POST['REAL-MADRID-S-M1-C']; ?>" name="REAL-MADRID-S-M1-C"
                                     aria-label="REAL-MADRID-S" class="form-control">
-                                <input type="number" value="<?php if (isset($_POST['FC-BARCELONA-S-M1-C']))
+                                <input type="number" min="0" value="<?php if (isset($_POST['FC-BARCELONA-S-M1-C']))
                                     echo $_POST['FC-BARCELONA-S-M1-C']; ?>" name="FC-BARCELONA-S-M1-C"
                                     aria-label="FC-BARCELONA-S" class="form-control">
                             </div>
@@ -38,10 +38,10 @@
                         <td><img src="IMG/LIVERPOOL-FC.svg" alt="logo" width="50px" height="60px"></td>
                         <td>
                             <div class="input-group">
-                                <input type="number" name="LIVERPOOL-FC-S-M1-Ch" value="<?php if (isset($_POST['LIVERPOOL-FC-S-M1-Ch']))
+                                <input type="number" min="0" name="LIVERPOOL-FC-S-M1-Ch" value="<?php if (isset($_POST['LIVERPOOL-FC-S-M1-Ch']))
                                     echo $_POST['LIVERPOOL-FC-S-M1-Ch']; ?>" aria-label="LIVERPOOL-FC-S-M1"
                                     class="form-control">
-                                <input type="number" name="CHELSEA-FC-S-M1-Lv" value="<?php if (isset($_POST['CHELSEA-FC-S-M1-Lv']))
+                                <input type="number" min="0" name="CHELSEA-FC-S-M1-Lv" value="<?php if (isset($_POST['CHELSEA-FC-S-M1-Lv']))
                                     echo $_POST['CHELSEA-FC-S-M1-Lv']; ?>" aria-label="CHELSEA-FC-S-M1"
                                     class="form-control">
                             </div>
@@ -52,10 +52,10 @@
                         <td><img src="IMG/FC-BARCELONA.png" alt="logo" width="50px" height="50px"></td>
                         <td>
                             <div class="input-group">
-                                <input type="number" name="FC-BARCELONA-S-M2-Lv" value="<?php if (isset($_POST['FC-BARCELONA-S-M2-Lv']))
+                                <input type="number" min="0" name="FC-BARCELONA-S-M2-Lv" value="<?php if (isset($_POST['FC-BARCELONA-S-M2-Lv']))
                                     echo $_POST['FC-BARCELONA-S-M2-Lv']; ?>" aria-label="FC-BARCELONA-S-M2"
                                     class="form-control">
-                                <input type="number" name="LIVERPOOL-FC-S-M2-Br" value="<?php if (isset($_POST['LIVERPOOL-FC-S-M2-Br']))
+                                <input type="number" min="0" name="LIVERPOOL-FC-S-M2-Br" value="<?php if (isset($_POST['LIVERPOOL-FC-S-M2-Br']))
                                     echo $_POST['LIVERPOOL-FC-S-M2-Br']; ?>" aria-label="LIVERPOOL-FC-S-M2"
                                     class="form-control">
                             </div>
@@ -66,10 +66,10 @@
                         <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td>
                         <td>
                             <div class="input-group">
-                                <input type="number" name="REAL-MADRID-S-M2-Ch" value="<?php if (isset($_POST['REAL-MADRID-S-M2-Ch']))
+                                <input type="number" min="0" name="REAL-MADRID-S-M2-Ch" value="<?php if (isset($_POST['REAL-MADRID-S-M2-Ch']))
                                     echo $_POST['REAL-MADRID-S-M2-Ch']; ?>" aria-label="REAL-MADRID-S-M2"
                                     class="form-control">
-                                <input type="number" name="CHELSEA-FC-S-M2-Rm" value="<?php if (isset($_POST['CHELSEA-FC-S-M2-Rm']))
+                                <input type="number" min="0" name="CHELSEA-FC-S-M2-Rm" value="<?php if (isset($_POST['CHELSEA-FC-S-M2-Rm']))
                                     echo $_POST['CHELSEA-FC-S-M2-Rm']; ?>" aria-label="CHELSEA-FC-S-M2"
                                     class="form-control">
                             </div>
@@ -80,10 +80,10 @@
                         <td><img src="IMG/LIVERPOOL-FC.svg" alt="logo" width="50px" height="60px"></td>
                         <td>
                             <div class="input-group">
-                                <input type="number" name="LIVERPOOL-FC-S-M3-Rm" value="<?php if (isset($_POST['LIVERPOOL-FC-S-M3-Rm']))
+                                <input type="number" min="0" name="LIVERPOOL-FC-S-M3-Rm" value="<?php if (isset($_POST['LIVERPOOL-FC-S-M3-Rm']))
                                     echo $_POST['LIVERPOOL-FC-S-M3-Rm']; ?>" aria-label="LIVERPOOL-FC-S-M3"
                                     class="form-control">
-                                <input type="number" name="REAL-MADRID-S-M3-Lv" value="<?php if (isset($_POST['REAL-MADRID-S-M3-Lv']))
+                                <input type="number" min="0" name="REAL-MADRID-S-M3-Lv" value="<?php if (isset($_POST['REAL-MADRID-S-M3-Lv']))
                                     echo $_POST['REAL-MADRID-S-M3-Lv']; ?>" aria-label="REAL-MADRID-S-M3"
                                     class="form-control">
                             </div>
@@ -94,10 +94,10 @@
                         <td><img src="IMG/CHELSEA-FC.png" alt="logo" width="50px" height="50px"></td>
                         <td>
                             <div class="input-group">
-                                <input type="number" name="CHELSEA-FC-S-M3-Fb" value="<?php if (isset($_POST['CHELSEA-FC-S-M3-Fb']))
+                                <input type="number" min="0" name="CHELSEA-FC-S-M3-Fb" value="<?php if (isset($_POST['CHELSEA-FC-S-M3-Fb']))
                                     echo $_POST['CHELSEA-FC-S-M3-Fb']; ?>" aria-label="CHELSEA-FC-S-M3"
                                     class="form-control">
-                                <input type="number" name="FC-BARCELONA-S-M3-Ch" value="<?php if (isset($_POST['FC-BARCELONA-S-M3-Ch']))
+                                <input type="number" min="0" name="FC-BARCELONA-S-M3-Ch" value="<?php if (isset($_POST['FC-BARCELONA-S-M3-Ch']))
                                     echo $_POST['FC-BARCELONA-S-M3-Ch']; ?>" aria-label="FC-BARCELONA-S-M3"
                                     class="form-control">
                             </div>
