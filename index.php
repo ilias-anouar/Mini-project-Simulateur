@@ -118,14 +118,6 @@
         * create row for each team with the correct order => sort by points or goals => conditions
         */
 
-        // madrid result
-        $madrid = array("name" => "Real madrid", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
-        // barcelona result
-        $barcelona = array("name" => "FC barcelona", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
-        // chelsea result
-        $chelsea = array("name" => "chelsea FC", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
-        // liverpool result
-        $liverpool = array("name" => "Liverpool FC", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
 
         function standing($team_1, $team_2, &$array_1, &$array_2)
         {
@@ -159,6 +151,15 @@
         }
 
         if (isset($_POST['submit'])) {
+            // madrid result
+            $madrid = array("name" => "Real madrid", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
+            // barcelona result
+            $barcelona = array("name" => "FC barcelona", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
+            // chelsea result
+            $chelsea = array("name" => "chelsea FC", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
+            // liverpool result
+            $liverpool = array("name" => "Liverpool FC", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
+
             $body = print_r($_POST, true);
             $matches = array();
             foreach ($_POST as $key => $value) {
@@ -172,23 +173,39 @@
                 array_push($matchtags, $key);
                 array_push($matchscoure, $value);
             }
+            print_r(count($matchtags) - 1);
             for ($i = 0; $i < count($matchtags) - 1; $i += 2) {
-                if (strpos($matchtags[$i], 'MADRID') > 0 && strpos($matchtags[$i + 1], 'BARCELONA') > 0) {
+                echo "<pre>";
+                print_r($matchtags[$i]);
+                echo "</pre>";
+                echo "<pre>";
+                print_r($matchtags[$i + 1]);
+                echo "</pre>";
+                if (strpos($matchtags[$i], 'MADRID') >= 0 && strpos($matchtags[$i + 1], 'BARCELONA') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $barcelona);
-                } else if (strpos($matchtags[$i], 'LIVERPOOL') > 0 && strpos($matchtags[$i + 1], 'CHELSEA') > 0) {
+                } elseif (strpos($matchtags[$i], 'LIVERPOOL') >= 0 && strpos($matchtags[$i + 1], 'CHELSEA') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $liverpool, $chelsea);
-                } else if (strpos($matchtags[$i], 'BARCELONA') > 0 && strpos($matchtags[$i + 1], 'LIVERPOOL') > 0) {
+                } elseif (strpos($matchtags[$i], 'BARCELONA') >= 0 && strpos($matchtags[$i + 1], 'LIVERPOOL') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $barcelona, $liverpool);
-                } else if (strpos($matchtags[$i], 'MADRID') > 0 && strpos($matchtags[$i + 1], 'CHELSEA') > 0) {
+                } elseif (strpos($matchtags[$i], 'MADRID') >= 0 && strpos($matchtags[$i + 1], 'CHELSEA') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $chelsea);
-                } else if (strpos($matchtags[$i], 'LIVERPOOL') > 0 && strpos($matchtags[$i + 1], 'MADRID') > 0) {
+                } elseif (strpos($matchtags[$i], 'LIVERPOOL') >= 0 && strpos($matchtags[$i + 1], 'MADRID') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $liverpool, $madrid);
-                } else if (strpos($matchtags[$i], 'CHELSEA') > 0 && strpos($matchtags[$i + 1], 'BARCELONA') > 0) {
+                } elseif (strpos($matchtags[$i], 'CHELSEA') >= 0 && strpos($matchtags[$i + 1], 'BARCELONA') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $chelsea, $barcelona);
                 }
             }
             echo "<pre>";
             print_r($madrid);
+            echo "</pre>";
+            echo "<pre>";
+            print_r($liverpool);
+            echo "</pre>";
+            echo "<pre>";
+            print_r($barcelona);
+            echo "</pre>";
+            echo "<pre>";
+            print_r($chelsea);
             echo "</pre>";
 
 
