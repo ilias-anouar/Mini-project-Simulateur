@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
     <title>Simulator</title>
 </head>
 
@@ -176,19 +178,6 @@
             }
 
             for ($i = 0; $i < count($matchtags) - 1; $i += 2) {
-                // echo "<pre>";
-                // echo $matchtags[$i];
-                // echo "</pre>";
-                // echo "<pre>";
-                // echo $matchtags[$i + 1];
-                // echo "</pre>";
-                // echo "<pre>";
-                // echo $matchscoure[$i];
-                // echo "</pre>";
-                // echo "<pre>";
-                // echo $matchscoure[$i + 1];
-                // echo "</pre>";
-
                 if ($matchtags[$i] === "REAL-MADRID-S-M1-C" && $matchtags[$i + 1] === "FC-BARCELONA-S-M1-C") {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $barcelona);
                 } elseif ($matchtags[$i] === "LIVERPOOL-FC-S-M1-Ch" && $matchtags[$i + 1] === "CHELSEA-FC-S-M1-Lv") {
