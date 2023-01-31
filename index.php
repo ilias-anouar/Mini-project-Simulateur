@@ -177,8 +177,6 @@
             for ($i = 0; $i < count($matchtags) - 1; $i += 2) {
                 echo "<pre>";
                 print_r($matchtags[$i]);
-                echo "</pre>";
-                echo "<pre>";
                 print_r($matchtags[$i + 1]);
                 echo "</pre>";
                 if (strpos($matchtags[$i], 'MADRID') >= 0 && strpos($matchtags[$i + 1], 'BARCELONA') >= 0) {
@@ -197,14 +195,8 @@
             }
             echo "<pre>";
             print_r($madrid);
-            echo "</pre>";
-            echo "<pre>";
             print_r($liverpool);
-            echo "</pre>";
-            echo "<pre>";
             print_r($barcelona);
-            echo "</pre>";
-            echo "<pre>";
             print_r($chelsea);
             echo "</pre>";
 
