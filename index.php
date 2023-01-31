@@ -24,7 +24,7 @@
                         <td><img src="IMG/REAL-MADRID.png" alt="logo" width="50px" height="60px"></td>
                         <td class="w-50">
                             <div class="input-group">
-                                <input type="number" value="<?php if (isset($_POST['REAL-MADRID-S-M1-C']))
+                                <input type="number"  value="<?php if (isset($_POST['REAL-MADRID-S-M1-C']))
                                     echo $_POST['REAL-MADRID-S-M1-C']; ?>" name="REAL-MADRID-S-M1-C"
                                     aria-label="REAL-MADRID-S" class="form-control">
                                 <input type="number" value="<?php if (isset($_POST['FC-BARCELONA-S-M1-C']))
