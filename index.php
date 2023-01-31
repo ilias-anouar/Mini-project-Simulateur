@@ -118,7 +118,6 @@
         * create row for each team with the correct order => sort by points or goals => conditions
         */
 
-
         function standing($team_1, $team_2, &$array_1, &$array_2)
         {
             // match 1 => madrid vs barcelona
@@ -160,25 +159,21 @@
             // liverpool result
             $liverpool = array("name" => "Liverpool FC", "points" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals" => 0, "goals_in" => 0, "+/-" => 0);
 
-            $body = print_r($_POST, true);
             $matches = array();
             foreach ($_POST as $key => $value) {
                 if ($value != null) {
                     $matches["$key"] = $value;
                 }
             }
+
             $matchtags = array();
             $matchscoure = array();
             foreach ($matches as $key => $value) {
                 array_push($matchtags, $key);
                 array_push($matchscoure, $value);
             }
-            print_r(count($matchtags) - 1);
+
             for ($i = 0; $i < count($matchtags) - 1; $i += 2) {
-                echo "<pre>";
-                print_r($matchtags[$i]);
-                print_r($matchtags[$i + 1]);
-                echo "</pre>";
                 if (strpos($matchtags[$i], 'MADRID') >= 0 && strpos($matchtags[$i + 1], 'BARCELONA') >= 0) {
                     standing($matchscoure[$i], $matchscoure[$i + 1], $madrid, $barcelona);
                 } elseif (strpos($matchtags[$i], 'LIVERPOOL') >= 0 && strpos($matchtags[$i + 1], 'CHELSEA') >= 0) {
@@ -193,13 +188,6 @@
                     standing($matchscoure[$i], $matchscoure[$i + 1], $chelsea, $barcelona);
                 }
             }
-            echo "<pre>";
-            print_r($madrid);
-            print_r($liverpool);
-            print_r($barcelona);
-            print_r($chelsea);
-            echo "</pre>";
-
 
             $result = array();
             array_push($result, $madrid);
@@ -221,6 +209,7 @@
                     return ($a['points'] > $b['points']) ? -1 : 1;
                 });
             }
+
             function buildTable($array)
             {
                 echo "<tbody>";
@@ -256,6 +245,7 @@
                     </tr>
                 </thead>
                 <?php
+
                 if (isset($result)) {
                     buildTable($result);
                 }
